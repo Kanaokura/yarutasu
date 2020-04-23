@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Socialite;
+use App\User;
 
 class LoginController extends Controller
 {
@@ -57,4 +58,26 @@ class LoginController extends Controller
         \Auth::login($user, true);
         return redirect('/home');
     }
+
+    public function createUserByGoogle($gUser)
+    {
+        $user = User::create([
+            'name'     => $gUser->name,
+            'email'    => $gUser->email,
+            'password' => \Hash::make(uniqid()),
+        ]);
+        return $user;
+    }
+
+   public function redirectToTwitter()
+    {
+        return Socialite::with('Twitter')->redirect();
+    }
+
+    public function handleTwitterCallback()
+    {
+        $user = Socialite::driver('Twitter')->user();
+        dd($user);
+    }
 }
+
