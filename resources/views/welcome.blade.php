@@ -5,5 +5,4 @@
 @endsection
 
 @section('content')
-    <img src="{{ asset('images/yarutasu.png') }}" alt="" class="">
 @endsection

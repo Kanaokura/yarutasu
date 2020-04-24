@@ -18,10 +18,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('login/google', 'Auth\LoginController@redirectToGoogle');
-Route::get('login/google/callback', 'Auth\LoginController@handleGoogleCallback');
-Route::get('/login/twitter', 'Auth\LoginController@redirectToTwitter');
-Route::get('/login/twitter/callback', 'Auth\LoginController@handleTwitterCallback');
+Route::get('/login/google', 'SocialAccountController@redirectToGoogle');
+Route::get('/login/google/callback', 'SocialAccountController@handleGoogleCallback');
+Route::get('/login/twitter', 'SocialAccountController@redirectToTwitter');
+Route::get('/login/twitter/callback', 'SocialAccountController@handleTwitterCallback');
 
 // access token :1234476725989298182-rzMhYvhKEPGL1s5w6BkitoCeBGNRma
 // Access token secret :CdEPlZHjWJvsJIO5Bfa79FpowtQhxtrB9mFt8vPOQHVxa
